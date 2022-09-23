@@ -1,3 +1,4 @@
+
 /**
  * This example takes a picture every 5s and print its size on serial monitor.
  */
@@ -93,8 +94,8 @@
 
 #endif
 
-static const char *TAG = "example:take_picture";
 
+static const char *TAG = "example:take_picture";
 
 
 static camera_config_t camera_config = {
@@ -141,6 +142,7 @@ static esp_err_t init_camera()
 
     return ESP_OK;
 }
+
 
 void app_main()
 {
