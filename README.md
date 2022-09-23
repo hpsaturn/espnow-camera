@@ -1,6 +1,6 @@
-## ESPNow ESP32 Streaming Camera 
+## ESPNow Camera 
 
-Proof of concept of ESP32Camera using ESPNow broadcast to others ESP32 using ESPNow
+Proof of concept using an ESP32 camera and ESPNow on broadcast mode to have video streaming to others ESP32 using ESPNow.
 
 ## Build
 
