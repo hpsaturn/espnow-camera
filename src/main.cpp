@@ -95,6 +95,8 @@
 
 static const char *TAG = "example:take_picture";
 
+
+
 static camera_config_t camera_config = {
     .pin_pwdn = CAM_PIN_PWDN,
     .pin_reset = CAM_PIN_RESET,
