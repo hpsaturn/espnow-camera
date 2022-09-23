@@ -1,2 +1,3 @@
-# esp32-T-Journal-camera
-TTGO ESP32 T-Journal camera test
+## ESPNow streaming ESP2 Camera 
+
+Proof of concept of ESP32Camera using ESPNow broadcast to others ESP32 using ESPNow
