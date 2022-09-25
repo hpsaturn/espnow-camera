@@ -7,6 +7,19 @@ Proof of concept using an ESP32 camera and ESPNow on broadcast mode to have vide
 ```cpp
 git clone --recursive https://github.com/hpsaturn/espnow-camera.git
 cd espnow-camera
+``` 
+
+We need remove extra target by this [issue](https://github.com/espressif/esp32-camera/issues/454):
+
+```bash
+cd lib/esp32-camera
+rm -r target/esp32s2 target/esp32s3/
+cd ../..
+``` 
+
+Build and upload:
+
+```bash
 pio run --target upload
 ``` 
 
