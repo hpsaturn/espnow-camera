@@ -1,0 +1,3 @@
+[submodule "lib/esp32-camera"]
+	path = lib/esp32-camera
+	url = https://github.com/hpsaturn/esp32-camera-espressif.git
