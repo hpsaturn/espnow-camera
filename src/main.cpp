@@ -47,6 +47,24 @@ static const char* _STREAM_CONTENT_TYPE = "multipart/x-mixed-replace;boundary=" 
 static const char* _STREAM_BOUNDARY = "\r\n--" PART_BOUNDARY "\r\n";
 static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %u\r\n\r\n";
 
+uint16_t frames;
+
+void displayFrameRate(){
+  static uint32_t framets = 0;
+  frames++;
+  if (millis() - framets > 1000){
+    framets = millis();
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(5, 5);
+    display.print(String(frames) + " fps");
+    Serial.println(String(frames) + " fps");
+    display.display();
+    frames = 0;
+  }
+}
+
 httpd_handle_t stream_httpd = NULL;
 
 static esp_err_t stream_handler(httpd_req_t *req){
@@ -91,6 +109,7 @@ static esp_err_t stream_handler(httpd_req_t *req){
     }
     if(res == ESP_OK){
       res = httpd_resp_send_chunk(req, _STREAM_BOUNDARY, strlen(_STREAM_BOUNDARY));
+      // displayFrameRate();
     }
     if(fb){
       esp_camera_fb_return(fb);
@@ -103,7 +122,8 @@ static esp_err_t stream_handler(httpd_req_t *req){
     if(res != ESP_OK){
       break;
     }
-    //Serial.printf("MJPG: %uB\n",(uint32_t)(_jpg_buf_len));
+    // Serial.printf("MJPG: %uB\n",(uint32_t)(_jpg_buf_len));
+
   }
   return res;
 }
@@ -154,10 +174,12 @@ void setup() {
   config.pixel_format = PIXFORMAT_JPEG; 
   
   if(psramFound()){
+    Serial.print("Camera with PSRAM");
     config.frame_size = FRAMESIZE_UXGA;
     config.jpeg_quality = 10;
     config.fb_count = 2;
   } else {
+    Serial.print("Camera without PSRAM");
     config.frame_size = FRAMESIZE_SVGA;
     config.jpeg_quality = 12;
     config.fb_count = 1;
