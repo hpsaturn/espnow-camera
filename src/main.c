@@ -148,11 +148,12 @@ static camera_config_t camera_config = {
     .ledc_channel = LEDC_CHANNEL_0,
 
     .pixel_format = PIXFORMAT_JPEG, //YUV422,GRAYSCALE,RGB565,JPEG
-    .frame_size = FRAMESIZE_240X240,    //QQVGA-UXGA Do not use sizes above QVGA when not JPEG
+    .frame_size = FRAMESIZE_QVGA,    //QQVGA-UXGA Do not use sizes above QVGA when not JPEG
 
     .jpeg_quality = 12, //0-63 lower number means higher quality
     .fb_count = 1,       //if more than one, i2s runs in continuous mode. Use only with JPEG
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
+    .fb_location = CAMERA_FB_IN_DRAM, 
 };
 
 static esp_err_t init_camera()
@@ -184,6 +185,6 @@ void app_main()
         ESP_LOGI(TAG, "Picture taken! Its size was: %zu bytes", pic->len);
         esp_camera_fb_return(pic);
 
-        vTaskDelay(5000 / portTICK_RATE_MS);
+        // vTaskDelay(5000 / portTICK_RATE_MS);
     }
 }
