@@ -105,14 +105,14 @@
 #define CAM_PIN_SIOD 25
 #define CAM_PIN_SIOC 23
 
-#define CAM_PIN_D7 18
-#define CAM_PIN_D6 39
-#define CAM_PIN_D5 5
-#define CAM_PIN_D4 34
-#define CAM_PIN_D3 35
-#define CAM_PIN_D2 17
-#define CAM_PIN_D1 4
-#define CAM_PIN_D0 2
+#define CAM_PIN_D7 19
+#define CAM_PIN_D6 36
+#define CAM_PIN_D5 18
+#define CAM_PIN_D4 39
+#define CAM_PIN_D3 5
+#define CAM_PIN_D2 34
+#define CAM_PIN_D1 35
+#define CAM_PIN_D0 17
 #define CAM_PIN_VSYNC 22
 #define CAM_PIN_HREF 26
 #define CAM_PIN_PCLK 21
